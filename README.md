@@ -42,20 +42,25 @@ Also, pay attention to code organization and make sure it is readable and clean.
 
 This system proposes a solution to solve a job queue problem. It was designed to run as a web server
 and the user is able to interact with its data through a HTTP API that accepts and returns JSON payloads.
+
 The solution keeps track of two main entities: agents and jobs. Using the exposed API methods, users
 are able to add entries to these entities and also query customized information such as how many jobs a
 certain agent has performed or view the current state of the job queue sorted by status.
+
 In order to make processing less costly, jobs are kept in three different collections: jobs that have
 been finished, jobs that are currently assigned and jobs that are waiting to be assigned. This was done
 because moving a job from one collection to another appears to be simpler than querying the collection to
 update a job’s status every time a status change happens. Another benefit from this approach is that jobs
 don’t have to be filtered when a job request is made or when an user wants to view the state of the queue.
+
 Using the request method, the user is able to dequeue jobs and assign them to an agent. Once a
 request is made, the system tries to find the best fitting job for the agent that requested it. If a job is found,
 it gets assigned to the agent and moved from the open jobs to the active jobs collection. If the requesting
 agent was already working a job, then that job is moved from the active jobs to the finished jobs collection.
 
 This document also covers instructions for starting the web server and running the test suite.
+
+## Commands
 
 The following commands require [Lein-Ring](https://clojars.org/lein-ring) installed.
 
