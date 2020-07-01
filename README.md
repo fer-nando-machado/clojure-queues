@@ -132,9 +132,9 @@ Processes a job request by the agent informed. If a job is found, responds with 
 
 ## Explanation
 
-The main program consists of five distinct steps, which will be further explained below.
+The algorithm is made of five functions.
 
-#### `(defn -main [& args] (array-to-json (dequeue (array-to-map (json-to-array (read-line))))))`
+`(array-to-json (dequeue (array-to-map (json-to-array (read-line))))))`
 
 #### 1. `(read-line)`
 
