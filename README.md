@@ -38,4 +38,56 @@ having tests that make sure your code works is a must.
 
 Also, pay attention to code organization and make sure it is readable and clean.
 
-#### License CC0 1.0 (Public Domain)
+## Solution
+
+The main program consists of five distinct steps, which will be further explained below.
+
+`(defn -main [& args] (array-to-json (dequeue (array-to-map (json-to-array (read-line))))))`
+
+### 1. `(read-line)`
+
+This function is called to read the JSON string from *in*.
+
+### 2. `(json-to-array json)`
+
+This function is used to treat and convert the input JSON to a data array.
+The JSON keys had to be trimmed to remove unwanted additional spaces and, later,
+converted to special keywords so they can be easily referenced on the program.
+The JSON values also need to be treated because, on the input example, slightly different
+strings could be found as skills. To solve this, a regex is applied to associate them with keywords.
+
+### 3. `(array-to-map array)`
+
+This function is used to group data from the input array into a map. Here, each item of the
+array is grouped into sub-arrays that are easily identified by a keyword: agents, jobs and requests,
+while still following the order they appeared on the original input JSON.
+
+### 4. `(dequeue data)`
+
+This is the function where the main processing occurs. It takes as an argument a map
+containing agents, jobs and requests and returns an array containing assignments.
+Here, the requests are iterated so a best fitting task can be found for each one of them.
+Before starting the iteration, the input jobs are sorted by their urgency. First, they are first
+split into two new arrays containing the urgent and the non-urgent jobs, respectively, while still
+following the order they appear on the original array. Then, these two arrays are concatenated to
+create a new array where the urgent jobs appear first and the non-urgent appear last.
+For each request, its related agent is first located using the (find-by-id coll id) function. This
+is done because their skillset data is needed on the next step.
+Using the (find-fittest-job-by-skillsets jobs agent) function, we try to locate the fittest job
+for each agent, respecting their skillsets. Here, the jobs array is filtered using the
+(filter-jobs-by-skillset jobs skillset) twice, first returning the jobs that match the agent’s primary
+skillset and, then, the jobs that match its secondary skillset. The results of these two filter
+operations are then concatenated into a new array and the first element of this array is returned as
+the fittest job. This whole operation is lazy, so it is interrupted when the first matching job is found.
+If a matching job is found during the previous step, an assignment is created to associate it
+with the agent that made the request using the (assign-job job agent) function. This assigned job is
+also removed from jobs array before iterating the next request.
+Finally, when all requests are iterated, an array containing the assignments is returned.
+
+### 5. `(array-to-json array)`
+
+This function takes the assignments array created on the previous step and returns a JSON
+string formatted with pretty-print.
+
+## License
+CC0 1.0 (Public Domain)
