@@ -89,5 +89,12 @@ Finally, when all requests are iterated, an array containing the assignments is 
 This function takes the assignments array created on the previous step and returns a JSON
 string formatted with pretty-print.
 
+## Feedback
+
+- We think you could have designed the solution in a way that better separates pure logic from impure code
+- There's a concurrency vulnerability in the code that updates the atom: there's a read operation immediately before the swap! and the result of this read operation has influence over whether swap! will execute or not; reading and then wapping os not an atomic operation, so a better solution would be to make that decision inside the swap function.
+- A single namespace solution was fine for the first half of the exercise, but when the codebase grows, it's wise to explode a single namespace into many: it improves code and tests readability.
+- This is not a huge issue - and did directly influence our decision - but it's something we noticed: the code contains excessive documentation. Function documentation is ok but can often be more terse or even absent (if the function name is clear enough). We also thought it was a little out of place having it written in Portuguese, since the code was written in English.
+
 ## License
 CC0 1.0 (Public Domain)
