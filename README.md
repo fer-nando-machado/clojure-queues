@@ -134,13 +134,13 @@ Processes a job request by the agent informed. If a job is found, responds with 
 
 The main program consists of five distinct steps, which will be further explained below.
 
-### `(defn -main [& args] (array-to-json (dequeue (array-to-map (json-to-array (read-line))))))`
+#### `(defn -main [& args] (array-to-json (dequeue (array-to-map (json-to-array (read-line))))))`
 
-### 1. `(read-line)`
+#### 1. `(read-line)`
 
 This function is called to read the JSON string from *in*.
 
-### 2. `(json-to-array json)`
+#### 2. `(json-to-array json)`
 
 This function is used to treat and convert the input JSON to a data array.
 
@@ -150,13 +150,13 @@ converted to special keywords so they can be easily referenced on the program.
 The JSON values also need to be treated because, on the input example, slightly different
 strings could be found as skills. To solve this, a regex is applied to associate them with keywords.
 
-### 3. `(array-to-map array)`
+#### 3. `(array-to-map array)`
 
 This function is used to group data from the input array into a map. Here, each item of the
 array is grouped into sub-arrays that are easily identified by a keyword: agents, jobs and requests,
 while still following the order they appeared on the original input JSON.
 
-### 4. `(dequeue data)`
+#### 4. `(dequeue data)`
 
 This is the function where the main processing occurs. It takes as an argument a map
 containing agents, jobs and requests and returns an array containing assignments.
@@ -184,7 +184,7 @@ also removed from jobs array before iterating the next request.
 
 Finally, when all requests are iterated, an array containing the assignments is returned.
 
-### 5. `(array-to-json array)`
+#### 5. `(array-to-json array)`
 
 This function takes the assignments array created on the previous step and returns a JSON
 string formatted with pretty-print.
