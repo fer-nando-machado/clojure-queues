@@ -58,9 +58,13 @@ request is made, the system tries to find the best fitting job for the agent tha
 it gets assigned to the agent and moved from the open jobs to the active jobs collection. If the requesting
 agent was already working a job, then that job is moved from the active jobs to the finished jobs collection.
 
-## Commands
+## Requisites
 
-The following commands require [Lein-Ring](https://clojars.org/lein-ring) installed.
+- [Leiningen](https://leiningen.org/)
+- [Lein-Ring](https://clojars.org/lein-ring)
+- [Lein-Midje](https://clojars.org/lein-midje)
+
+## Commands
 
 ### Test 
 #### `lein midje :autotest`
