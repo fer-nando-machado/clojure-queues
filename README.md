@@ -109,10 +109,10 @@ Given an agent id, returns how many jobs of each type this agent has performed. 
 Returns an object containing a breakdown of the all jobs, including finished jobs, active jobs and jobs that are still waiting on the queue.
 ###### response 
     {
-     "finished":[],
-     "active": [{"id":"c0033410", "type":"bills", "urgent":true, "agent_id":"8ab86c18"},
-                    {"id":"f26e890b", "type":"rewards", "urgent":false, "agent_id":"ed0e23ef"}],
-     "waiting":[{"id":"690de6bc", "type":"bills", "urgent":false}]
+        "finished":[],
+        "active": [{"id":"c0033410", "type":"bills", "urgent":true, "agent_id":"8ab86c18"},
+                   {"id":"f26e890b", "type":"rewards", "urgent":false, "agent_id":"ed0e23ef"}],
+        "waiting":[{"id":"690de6bc", "type":"bills", "urgent":false}]
     }
     
 #### `POST /jobs/add` 
@@ -197,4 +197,4 @@ string formatted with pretty-print.
 - This is not a huge issue - and did directly influence our decision - but it's something we noticed: the code contains excessive documentation. Function documentation is ok but can often be more terse or even absent (if the function name is clear enough). We also thought it was a little out of place having it written in Portuguese, since the code was written in English.
 
 ## License
-2018 CC0 1.0 (Public Domain)
+2018 [MIT License](LICENSE)
