@@ -94,7 +94,7 @@ Adds the agent informed on the request the agent collection. Returns an array of
     [{"id":"8ab86c18", "name":"BoJack Horseman", "primary_skillset":["bills"], "secondary_skillset":[]}]
 
 #### `POST /agents/state` 
-Given an agent id, returns how many jobs of each type this agent has performed. (* **TO-DO:** this should be a GET method instead of POST*)
+Given an agent id, returns how many jobs of each type this agent has performed. (**TO-DO:** *this should be a GET method instead of POST*)
 ###### request 
     {"id": "ed0e23ef"}
 ###### response 
@@ -118,7 +118,7 @@ Adds the informed job the job queue. Returns an array of the jobs on the queue.
     [{"id": "f26e890b", "type": "rewards_question", "urgent": false}]
 
 #### `POST /jobs/request` 
-Processes a job request by the agent informed. If a job is found, returns its id. (* **TO-DO:** are both fields necessary?*)
+Processes a job request by the agent informed. If a job is found, responds with its id. (**TO-DO:** *are both fields necessary in response? if a job is not found, what is returned?*)
 
 ###### request 
     {"agent_id": "ed0e23ef"} 
