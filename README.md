@@ -30,18 +30,16 @@ implement a dequeue function that abides to these rules:
 
 A job is considered to be done when the agent it was assigned to requests a new job.
 
-Attached are two files: `sample-input.json` and `sample-output.json`. Your program should be able to take the
-contents of the `sample-input.json` file via stdin and produce the contents of `sample-output.json` on stdout.
-
 As we rely heavily on automated tests and our CI tool to ship code to production multiple times per day, 
-having tests that make sure your code works is a must.
+having tests that make sure your code works is a must. Also, pay attention to code organization and make sure it is readable and clean.
 
-Also, pay attention to code organization and make sure it is readable and clean.
+Once you have your dequeuing solution up and running, you must create an HTTP API to interact with your job queue system.
+
+All endpoints should accept and return JSON content type payloads.
 
 ## Solution
 
-This system proposes a solution to solve a job queue problem. It was designed to run as a web server
-and the user is able to interact with its data through a HTTP API that accepts and returns JSON payloads.
+This system was designed to run as a web server and the user is able to interact with its data through a HTTP API that accepts and returns JSON payloads.
 
 The solution keeps track of two main entities: agents and jobs. Using the exposed API methods, users
 are able to add entries to these entities and also query customized information such as how many jobs a
@@ -195,7 +193,7 @@ string formatted with pretty-print.
 
 - We think you could have designed the solution in a way that better separates pure logic from impure code
 - There's a concurrency vulnerability in the code that updates the atom: there's a read operation immediately before the swap! and the result of this read operation has influence over whether swap! will execute or not; reading and then wapping os not an atomic operation, so a better solution would be to make that decision inside the swap function.
-- A single namespace solution was fine for the first half of the exercise, but when the codebase grows, it's wise to explode a single namespace into many: it improves code and tests readability.
+- A single namespace solution was fine for the first half of the exercise, but when the codebase grows, it's wise to explode a single namespace into many: it improves code and tests readability. (**TO-DO:** https://www.braveclojure.com/organization/)
 - This is not a huge issue - and did directly influence our decision - but it's something we noticed: the code contains excessive documentation. Function documentation is ok but can often be more terse or even absent (if the function name is clear enough). We also thought it was a little out of place having it written in Portuguese, since the code was written in English.
 
 ## License
