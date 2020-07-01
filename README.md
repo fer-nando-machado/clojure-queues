@@ -2,7 +2,7 @@
 
 Clojure web server that exposes an API that interacts with a **job queue** system.
 
-## Description
+## Problem
 
 We have a large Customer Experience team, focusing on delivering high quality, friendly support to our
 customers. To ensure the efficiency and success of this operation, we organize the work to be done in job queues.
