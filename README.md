@@ -58,8 +58,6 @@ request is made, the system tries to find the best fitting job for the agent tha
 it gets assigned to the agent and moved from the open jobs to the active jobs collection. If the requesting
 agent was already working a job, then that job is moved from the active jobs to the finished jobs collection.
 
-This document also covers instructions for starting the web server and running the test suite.
-
 ## Commands
 
 The following commands require [Lein-Ring](https://clojars.org/lein-ring) installed.
@@ -72,12 +70,12 @@ Runs the tests suite. The `:autotest` parameters makes it look for changes and r
 ### Build
 #### `lein ring uberjar`
 
-Builds an standalone executable `.jar` file. This file can be executed by running `java -jar file.jar`.
+Builds a standalone executable `.jar` file. This file can be executed by running `java -jar file.jar`.
 
 ### Run
 #### `lein ring server-headless`
 
-Runs the server and exposes the API on port `3000`.
+Runs the web server and exposes the API on port `3000`.
 
 ## Endpoints
 
